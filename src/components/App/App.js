@@ -5,12 +5,37 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 import GlobalStyles from "./GlobalStyles";
 import ArtistRoute from "../ArtistRoute";
 
-const DEFAULT_ARTIST_ID = "4LLpKhyESsyAXpc4laK94U";
+import { useDispatch } from "react-redux";
+import {
+  requestAccessToken,
+  receiveAccessToken,
+  receiveAccessTokenError,
+} from "../../actions";
+
+const DEFAULT_ARTIST_ID = "1vCWHaC5f2uS3yhpwWbIA6";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(requestAccessToken());
+
+    fetch("/spotify_access_token")
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        dispatch(receiveAccessToken(json.access_token));
+      })
+      .catch((err) => {
+        console.error(err);
+        dispatch(receiveAccessTokenError());
+      });
+  }, []);
+
   return (
     <Router>
       <Switch>

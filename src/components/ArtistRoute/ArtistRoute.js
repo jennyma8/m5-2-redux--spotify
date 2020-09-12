@@ -10,6 +10,7 @@ import {
 
 const ArtistRoute = () => {
   const accessToken = useSelector((state) => state.auth.token);
+  console.log(accessToken);
   const currentArtist = useSelector((state) => state.artists);
   const { id } = useParams();
 

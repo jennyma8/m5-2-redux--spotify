@@ -16,7 +16,7 @@ import {
   receiveAccessTokenError,
 } from "../../actions";
 
-const DEFAULT_ARTIST_ID = "1vCWHaC5f2uS3yhpwWbIA6";
+const DEFAULT_ARTIST_ID = "4LLpKhyESsyAXpc4laK94U";
 
 const App = () => {
   const dispatch = useDispatch();

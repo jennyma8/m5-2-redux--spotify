@@ -16,7 +16,7 @@ import {
   receiveAccessTokenError,
 } from "../../actions";
 
-const DEFAULT_ARTIST_ID = "4LLpKhyESsyAXpc4laK94U";
+const DEFAULT_ARTIST_ID = "4LLpKhyESsyAXpc4laK94U"; //Mac Miller
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,6 @@ const App = () => {
     fetch("/spotify_access_token")
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         dispatch(receiveAccessToken(json.access_token));
       })
       .catch((err) => {

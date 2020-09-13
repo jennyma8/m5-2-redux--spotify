@@ -11,8 +11,11 @@ import styled from "styled-components";
 
 const ArtistRoute = () => {
   const accessToken = useSelector((state) => state.auth.token);
+  console.log(accessToken); //null and then loads
   const artist = useSelector((state) => state.artists.currentArtist);
+  console.log(artist); //null and then loads
   const artistStatus = useSelector((state) => state.artists.status);
+
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -32,14 +35,20 @@ const ArtistRoute = () => {
     }
   }, [accessToken, id]);
 
-  if (artistStatus.status === "loading") {
+  if (artistStatus === "loading" || !artist) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <Wrapper>
-      <div>Artist: {artist.profile.name}</div>
-      <img src={artist.profile.image[0].url} />
+      {/* <div>{accessToken}</div> */}
+      <img src={artist.profile.images[0].url} />
+      <div>{artist.profile.name}</div>
+      <div>
+        <strong>{artist.profile.followers.total}</strong> followers
+      </div>
+      <div>Tags</div>
+      <div>{artist.profile.genres}</div>
     </Wrapper>
   );
 };

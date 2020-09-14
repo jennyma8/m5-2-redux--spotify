@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { COLORS } from "../COLORS";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -10,6 +11,8 @@ span {
   padding: 0;
   border: 0;
   vertical-align: baseline;
+  background: ${COLORS.background};
+  color: ${COLORS.letters};
 }
 
 /* GLOBAL STYLES */
